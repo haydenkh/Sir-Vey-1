@@ -13,20 +13,20 @@ def index():
         return render_template("test-create.html")
     else:
        question = request.form['question']
-       #qtype = request.form['qtype']
-       #length = request.form['length']
+       qtype = request.form['qtype']
+       length = request.form['length']
         
-   
-       return redirect(url_for('create_form',question = question))
+       return redirect(url_for('create_form',question=question))
         
         
 @app.route("/form")
 @app.route("/form/<question>", methods = ['POST','GET'])
 def create_form(question=None):
+    #get questions variables here and use them
     if request.method == "GET":
-        return render_template("created-form.html",question=question)
-    else:
-        return render_template("created-form.html", question=question)
+        return render_template("created-form.html",question=question,qtype="text")
+
+        
 
 
 
