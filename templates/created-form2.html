@@ -1,0 +1,18 @@
+<!doctype HTML>
+
+<form action = "" method="post">
+
+<h1> {{question}} </h1>
+
+
+ {%if qtype =="text"%}
+  <p> <input type=text name=response> </p>
+ {%else%}
+   {%set counter = 0%}
+   {%for answer in answers%}
+     {{answer}} <input type=radio name=answer{counter}>
+  {%set counter = counter+1%}
+  {%endfor%}
+ {%endif%}
+
+<input type=submit name=button value="Submit Answer">
