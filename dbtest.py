@@ -1,7 +1,7 @@
 import db
 
 db.drop_collection2()
-
+db.drop_collection1()
 
 db.add_form("How do you do?","Text", ['good'] , False )
 db.add_form("How do you do?","mc",['hood'], False)
@@ -22,6 +22,9 @@ db.send_question("Hey Patrick!",["PatrickStar@gmail.com"])
 #print db.get_recipient(x[0])
 x = db.get_recipient_answerids("PatrickStar@gmail.com")
 print x[0]
+print "ready"
+db.set_answer(x[0],'5')
+print db.get_answer(x[0])
 
 forms=db.get_forms()
 qtype=db.get_qtype("How do you do?")

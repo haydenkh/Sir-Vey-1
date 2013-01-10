@@ -167,3 +167,14 @@ def get_recipient_answerids(recipient):
         answerid.append(i['_id'])
     return answerid
     
+def set_answer(answerid, answer):
+    collection = connect2()
+    d = [x for x in collection.find({'_id':ObjectId(answerid)})]
+    if len(d) == 0:
+        return
+    d = d[0]
+    print d
+    tmp =  d['answer']
+    print tmp
+    tmp.append(answer)
+    collection.update({'_id':ObjectId(answerid)},d)
