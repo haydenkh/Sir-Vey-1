@@ -1,4 +1,4 @@
-class Form
+class form:
    """ used for creating the forms on webpage"""
 
    def set_type(self, bool):
