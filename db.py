@@ -1,4 +1,6 @@
 from pymongo import Connection
+from bson.objectid import ObjectId
+
 Connection = Connection('mongo.stuycs.org')
 
 def drop_collection2():
@@ -85,7 +87,7 @@ def get_question_id(question):
 
 def get_question(questionid):
     collection = connect1()
-    question =  [i for i in collection.find({'_id':questionid})]
+    question =  [i for i in collection.find({'_id':ObjectId(questionid)})]
     if len(question) ==0:
         return
     question = question[0]
@@ -118,32 +120,31 @@ def get_results():
     collection = connect2()
     results = []
     res = collection.find()
-    for i in res:
-        results.append((i['_id']))
+    results =[x['_id'] for x in res]
     return results
 
 
 def get_answer(answerid):
     #returns the selected answer for a given result id
     collection = connect2()
-    answer =  [i for i in collection.find({'_id':answerid})]
-    if len(answer) != 1:
+    answer =  [i for i in collection.find({'_id':ObjectId(answerid)})]
+    if len(answer) == 0:
         return
     answer = answer[0]
-    answer = answer['answer']
-    return answer 
+    return answer['answer']
+
 
 def get_recipient(answerid):
     #get recipient by id
     collection = connect2()
-    recipient = [i for i in collection.find({'_id':answerid})]
-    if len(recipient) !=1:
+    recipient = [i for i in collection.find({'_id':ObjectId(answerid)})]
+    if len(recipient) == 0:
         return
     recipient = recipient[0]
-    recipient = recipient['recipient']
-    return recipient
+    return  recipient['recipient']
 
 def get_question_r(answerid):
+    #returns question based on answer id
     collection = connect2()
     question = [i for i in collection.find({'_id':answerid})]
     if len(question) != 1:
@@ -151,3 +152,18 @@ def get_question_r(answerid):
     question = question[0]
     question = question['question']
     return question
+
+def get_recipient_answerids(recipient):
+    #returns answer id's associated with recipient
+    collection = connect2()
+    answerid = []
+    r = [i for i in collection.find({'recipient':recipient})]
+    
+    if len(r) == 0:
+        print "r=0"
+        return
+
+    for i in r:
+        answerid.append(i['_id'])
+    return answerid
+    
