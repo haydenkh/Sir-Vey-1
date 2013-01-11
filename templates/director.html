@@ -59,13 +59,19 @@
     </div>
 
     <div class="container">
+      <form action = "" method="post">
 <h2> Who would you like to answer your question?
       </h2>
       <br><br>
       
       {{% for student in students %}}
       <input type="checkbox" value={{student}} name={{student}}>
+      {% endfor% }
+      <br><br>
 
+      <input type=submit name=button value="Submit Answer">
+      </form>
+      
 <br><br><br><br>
     </div> <!-- /container -->
 
