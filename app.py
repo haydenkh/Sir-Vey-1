@@ -11,7 +11,7 @@ app.secret_key = 'oyeah'
 @app.route("/", methods = ['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        return render_template("test-create.html")
+        return render_template("test-create2.html")
 
     else:
         
