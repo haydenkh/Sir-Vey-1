@@ -12,7 +12,6 @@ user ="Eliftw@gmail.com"
 @app.route("/", methods = ['GET', 'POST'])
 def create_form():
     
-    
     if request.method == 'GET':
         if user == "Eliftw@gmail.com":
             return render_template("test-create2.html")
@@ -53,18 +52,25 @@ def take_survey(question=None):
                                answers=db.get_answers(question))
 
 
-@app.route("/user")
-@app.route("/user/<user>",methods = ['POST','GET'])
+#@app.route("/user")
+@app.route("/user",methods = ['POST','GET'])
 def profile_page():
     if request.method == "GET":
+        #this checks the database 
         tmp = db.get_recipient_answerids(user)
         forms = []
         for i in tmp:
-            forms.append(db.get_question_r(i))
+            if db.get_answer(i) == []:
+               forms.append(db.get_question_r(i))
         return render_template("profile.html",
                                user = user,
                                form_ids = forms)
 
+    else:
+        if request.form['button'] == 'Take Survey':
+            question = request.form['question']
+            return redirect(url_for('take_survey',question=question))
+            
 if __name__ == "__main__":
     app.debug = True
     app.run(port=5000)
