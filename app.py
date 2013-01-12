@@ -7,18 +7,21 @@ import db
 app = Flask(__name__)
 app.secret_key = 'oyeah'
 
+user ="Eliftw@gmail.com"
 
 @app.route("/", methods = ['GET', 'POST'])
-def index():
+def create_form():
+    
+    
     if request.method == 'GET':
-        return render_template("test-create2.html")
-
+        if user == "Eliftw@gmail.com":
+            return render_template("test-create2.html")
+        else:
+            return render_template("profile.html")
     else:
-        
        question = request.form['question']
        qtype = request.form['qtype']
        length = request.form['length']
-       
        #if anon isn't checked set to null
        try:
            anon = request.form['anon']
@@ -26,7 +29,6 @@ def index():
            anon = ''
        #set answers null incase text
        answers = []
-
        i = 1
        if qtype =='mc':
            #iterate through answers written depending on length
@@ -37,19 +39,31 @@ def index():
        #save form        
        db.add_form(question,qtype,answers,anon)
        
-       return redirect(url_for('create_form',question=question))
+       return redirect(url_for('take_survey',question=question))
         
         
 @app.route("/form")
 @app.route("/form/<question>", methods = ['POST','GET'])
-def create_form(question=None):
+def take_survey(question=None):
     #get questions variables here and use them
     if request.method == "GET":
-        return render_template("created-form.html",question=question,qtype=db.get_qtype(question),answers=db.get_answers(question))
+        return render_template("created-form.html",
+                               question=question,
+                               qtype=db.get_qtype(question),
+                               answers=db.get_answers(question))
 
-        
 
-
+@app.route("/user")
+@app.route("/user/<user>",methods = ['POST','GET'])
+def profile_page():
+    if request.method == "GET":
+        tmp = db.get_recipient_answerids(user)
+        forms = []
+        for i in tmp:
+            forms.append(db.get_question_r(i))
+        return render_template("profile.html",
+                               user = user,
+                               form_ids = forms)
 
 if __name__ == "__main__":
     app.debug = True
