@@ -66,9 +66,16 @@ list of form_ids called form_ids
     <div class="container">
 <br><br>
 <form action = "" method="post">
-{% for form in form_ids %}
-<input type="checkbox" name={form} href="127.0.0.1/form/{form}" />
+<h1>Inbox:</h1>
+      <br>
+      {% for form in form_ids %}
+<input type="checkbox" name={{form}} href="127.0.0.1/form/{{form}}" />
+      {{form}}
+      <br><br>
 {% endfor %}
+  <button class="btn btn-primary" type="button" name=submit>Submit</button>
+  <button class="btn btn-primary" type="button" name=logout>Logout</button>
+
 </form>
 
 <br><br><br><br>
