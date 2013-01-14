@@ -74,7 +74,7 @@ list of form_ids called form_ids
   There are no surveys for you to take right now
 </b>
 {%else%}
-<select>
+<select name="question">
 {% for form in form_ids %}
  <option value="{{form}}"> {{form}} </option>
 {% endfor %}

@@ -112,8 +112,21 @@ def send_question(question,recipient):
     #later they will fill in the answer
     collection = connect2()
     for i in recipient: 
-        d = {'question':question,'recipient':i,'answer':[]}
-    collection.insert(d)
+        if collection.find({'question':question,
+                            'recipient':i}).count() == 0:
+
+            d = {'question':question,'recipient':i,'answer':[]}
+            collection.insert(d)
+    
+
+def get_answer_id(question,recipient):
+    collection = connect2()
+    answerid = [i for i in collection.find({'question':question,'recipient':recipient})]
+    if len(answerid) == 0:
+        return
+    else:
+        answerid = answerid[0]
+        return answerid['_id']
 
 def get_results():
     #return the _id of all results 
@@ -142,6 +155,7 @@ def get_recipient(answerid):
         return
     recipient = recipient[0]
     return  recipient['recipient']
+
 
 def get_question_r(answerid):
     #returns question based on answer id
@@ -178,3 +192,18 @@ def set_answer(answerid, answer):
     print tmp
     tmp.append(answer)
     collection.update({'_id':ObjectId(answerid)},d)
+
+
+def get_recipient_answers(recipient):
+    answers = []
+    answerids = get_recipient_answerids(recipient)
+    for i in answerids:
+        answers.append(get_answer(i))
+    return answers
+
+def get_recipient_questions(recipient):        
+    questions = []
+    answerids = get_recipient_answerids(recipient)
+    for i in answerids:
+        questions.append(get_question_r(i))
+    return questions

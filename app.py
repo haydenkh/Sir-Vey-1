@@ -46,10 +46,16 @@ def create_form():
 def take_survey(question=None):
     #get questions variables here and use them
     if request.method == "GET":
-        return render_template("created-form.html",
+        return render_template("created-form2.html",
                                question=question,
                                qtype=db.get_qtype(question),
                                answers=db.get_answers(question))
+    else:
+        answer = request.form['response']
+        answerid = db.get_answer_id(question,user)
+        db.set_answer(answerid,answer)
+        flash("Thank You!")
+        return redirect(url_for("profile_page"))
 
 
 #@app.route("/user")
@@ -71,6 +77,8 @@ def profile_page():
             question = request.form['question']
             return redirect(url_for('take_survey',question=question))
             
+
+
 if __name__ == "__main__":
     app.debug = True
     app.run(port=5000)
