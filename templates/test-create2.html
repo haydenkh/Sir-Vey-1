@@ -59,40 +59,47 @@
     </div>
 
     <div class="container">
-      
+    
 <form action "" method="post">
   <br>
       <center><h1>Create your survey:</h1>
       <b>Follow these simple steps to
   assess your students right in the middle of your lesson!</b>
       <br>
-  <center> <p> <h3><b>1. What is your question?</b></h3> </p>
+  <div id="myCollapsibleExample"><a href="#demo" data-toggle="collapse"><center><br><p> <h3><b>1. Response Type:</b> </p> </h3></a></div>
+       <div id="demo" class="collapse">
+    <p> <input type=radio name="qtype" id = "text" name = "quesiton" value= "text"  onclick ="checked(this.value);" </> Text Answer </p> 
+	       <p> <input type=radio name="qtype"id = "mult"  name = "question" value= "mc" onclick = "checked(this.value);" </>  Multiple
+  Choice </p></div>
 
-  <p> <input type=text name=question > <p>
+
+  <div id="myCollapsibleExample"><a href="#demo1" data-toggle="collapse"><p> <h3><b>2. What is your question?</b></h3> </p>
+<div id = "demo1" class = "collapse" 
+  <p> <input type=text name=question > <p></div>
 <div class="row">
   <div class="span6">
-  <p> <b>2. Response Type:</b> </p> 
-     
-  <p> <input type=radio name="qtype" value=text </input> Text Answer </p> 
-  <p> <input type=radio name="qtype" value=mc </input>  Multiple
-  Choice </p>
+
 
       <br>
-  <p> <b>3. How many answer choices? </b> <p>
- 
+
+  <div id="myCollapsibleExample"><a href="#demo2" data-toggle="collapse"><p> <b>3. How many answer choices? </b> <p></div>
+  <div id="demo2" class="collapse">
  <p> <input type=radio name=length value=2 </input> 2 Choices </p>
  <p> <input type=radio name=length value=3 </input> 3 Choices </p>
- <p> <input type=radio name=length value=4 </input> 4 Choices </p>
-</div>
+ <p> <input type=radio name=length value=4 </input> 4 Choices </p></div></div>
+
  <div class="span6">     
- <p> <b>4. Answer Choices:</b> <p>
- 
+ <div id="myCollapsibleExample"><a href="#demo3" data-toggle="collapse"><p> <b>4. Answer Choices:</b> <p></div>
+ <div id  = "demo3" class = "collapse"
  <p> <b> Correct Choice 1 </b> <input type=text name=Answer1 </input> </p>
  <p> Answer Choice 2 <input type=text name=Answer2 </input> </p>
  <p> Answer Choice 3 <input type=text name=Answer3 </input> </p>
- <p> Answer Choice 4 <input type=text name=Answer4 </input> </p> 
+ <p> Answer Choice 4 <input type=text name=Answer4 </input> </p> </div>
 </div></div>
-<p> <b>Anonymous?</b> <input type=checkbox name=anon value=anon </input> </p>
+
+<div id="myCollapsibleExample"><a href="#demo4" data-toggle="collapse"><p> <b>5. Anonymous?</b> 
+<div id = "demo4" class = "collapse" <p>Yes <input type=radio name=yesanon </input> </p>
+ <p>No <input type=radio name=noanon </input> </p>
  <p> <input type=submit name=button value=Submit </input> </p> </center>
       <br><br><br><br>
     </div> <!-- /container -->
@@ -100,6 +107,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+
     <script src="../static/js/jquery.js"></script>
     <script src="../static/js/bootstrap-transition.js"></script>
     <script src="../static/js/bootstrap-alert.js"></script>
@@ -113,6 +121,16 @@
     <script src="../static/js/bootstrap-collapse.js"></script>
     <script src="../static/js/bootstrap-carousel.js"></script>
     <script src="../static/js/bootstrap-typeahead.js"></script>
+    <script>
+      function checked(type)
+      {
+      console.log(type);
+      if (type == "mc" || type == "text"){
+      console.log('hello');
+      return True
+      }
+      }
+    </script>
 
   </body>
 </html>
