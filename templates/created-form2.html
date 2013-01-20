@@ -61,10 +61,10 @@
     <div class="container">
 
 <form action = "" method="post">
-
+<br><br>
 <h1> {{question}} </h1>
-
-
+Type or select your answer below, then press 'Submit Answer'.
+      <br><br>
  {% if qtype =="text"%}
   <p> <input type=text name=response> </p>
  {% else %}
@@ -74,7 +74,7 @@
   {% set counter = counter+1%}
   {% endfor%}
  {% endif%}
-
+<br><br>
 <input type=submit name=button value="Submit Answer">
 </form>
 
