@@ -64,9 +64,12 @@ list of form_ids called form_ids
     </div>
 
     <div class="container">
-<br><br>
 <form action = "" method="post">
-<h1>Inbox:</h1>
+      <br>
+      <center><h2>User Profile</h2>
+      <b>Here is your home base, where you can find your <br>inbox of
+      unanswered and saved questions.</b></center><br>
+<center><h3>Inbox:</h3>
       <br>
       {% for form in form_ids %}
 <input type="checkbox" name={{form}} href="127.0.0.1/form/{{form}}" />
@@ -78,9 +81,10 @@ list of form_ids called form_ids
       <br><br>
   <button class="btn btn-primary" type="button"
       name=submit>Submit</button>
-      <br><br>Or<br>
-  <button class="btn btn-primary" type="button" name=logout>Logout</button>
-
+      <br><br><br>
+      Ready to leave?
+      <br><br><button class="btn btn-primary" type="button" name=logout>Logout</button>
+</center>
 </form>
 
 <br><br><br><br>
