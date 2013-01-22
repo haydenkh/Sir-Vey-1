@@ -65,6 +65,25 @@ list of form_ids called form_ids
 
     <div class="container">
 <form action = "" method="post">
+<<<<<<< HEAD:templates/profile.html
+
+<b> Hello {{user}} </b>
+
+{%if forms == []%}
+<b>
+  There are no surveys for you to take right now
+</b>
+{%else%}
+<select name="question">
+{% for form in form_ids %}
+ <option value="{{form}}"> {{form}} </option>
+{% endfor %}
+</select>
+
+<p> <input type=submit name=button value="Take Survey"> </p>
+
+{%endif%}
+
  
       <br>
       <center><h2>User Profile</h2>
@@ -86,6 +105,7 @@ list of form_ids called form_ids
       Ready to leave?
       <br><br><button class="btn btn-primary" type="button" name=logout>Logout</button>
 </center>
+
 </form>
 
 <br><br><br><br>

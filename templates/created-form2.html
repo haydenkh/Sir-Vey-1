@@ -70,7 +70,7 @@ Type or select your answer below, then press 'Submit Answer'.
  {% else %}
    {% set counter = 0%}
    {% for answer in answers%}
-     {{answer}} <input type=radio name=answer{counter}>
+     {{answer}} <input type=radio name=response value={{counter}}>
   {% set counter = counter+1%}
   {% endfor%}
  {% endif%}
