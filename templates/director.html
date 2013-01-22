@@ -1,3 +1,8 @@
+<!--
+Parameters:
+list of students called students
+-->
+
 <!doctype HTML>
 <html lang="en">
   <head>
@@ -59,25 +64,19 @@
     </div>
 
     <div class="container">
-
-<form action = "" method="post">
-<br><br>
-<h1> {{question}} </h1>
-Type or select your answer below, then press 'Submit Answer'.
+      <form action = "" method="post"><br>
+<h2> Who would you like to answer your question?</h2>
+      <b>Select which of your students you'd like to answer your question.</b>
+      <br><br><br>
+      
+      {% for student in students %}
+      <input type="checkbox" id = "check" value={{student}} name={{student}}>
+      {% endfor% }
       <br><br>
- {% if qtype =="text"%}
-  <p> <input type=text name=response> </p>
- {% else %}
-   {% set counter = 0%}
-   {% for answer in answers%}
-     {{answer}} <input type=radio name=response value={{counter}}>
-  {% set counter = counter+1%}
-  {% endfor%}
- {% endif%}
-<br><br>
-<input type=submit name=button value="Submit Answer">
-</form>
-
+  <button class="btn btn-primary" type="button" name=button>Send Question</button>
+<button class = "btn btn-primary" id = selectAll type = "button" name = button>Select All</button>
+      </form>
+      
 <br><br><br><br>
     </div> <!-- /container -->
 
@@ -97,6 +96,15 @@ Type or select your answer below, then press 'Submit Answer'.
     <script src="../static/js/bootstrap-collapse.js"></script>
     <script src="../static/js/bootstrap-carousel.js"></script>
     <script src="../static/js/bootstrap-typeahead.js"></script>
+    <script>
+      $("#selectAll").click(function(){
+      selectAll();
+      });
 
+
+      function selectAll(){
+      $('#check').prop('checked', true);
+      }
+    </script>
   </body>
 </html>
