@@ -57,31 +57,36 @@
         </div>
       </div>
     </div>
-
+ <body>
     <div class="container">
-
-<form action = "" method="post">
-<br><br>
-<h1> {{question}} </h1>
-Type or select your answer below, then press 'Submit Answer'.
+      <form class="form-signin"><br><br>
+        <center><h2>Welcome to Sir-Vey!</h2></center>
+    <form name="input" action="html_form_action.asp" method="GET">
       <br><br>
- {% if qtype =="text"%}
-  <p> <input type=text name=response> </p>
- {% else %}
-   {% set counter = 0%}
-   {% for answer in answers%}
-     {{answer}} <input type=radio name=answer{counter}>
-  {% set counter = counter+1%}
-  {% endfor%}
- {% endif%}
-<br><br>
-<input type=submit name=button value="Submit Answer">
-</form>
-
-<br><br><br><br>
+     <center> <b>Log in with your email:</b>
+      <br><br>
+      <center><input type="text" placeholder="Email" name="login"></center>
+      <input type="radio" name=person value=student </input>  Student?
+      <input type="radio" name=person value=teacher</input>  Teacher?
+      <br><br>
+      <center><button class="btn btn-small btn-primary"
+      type="submit" name="button" value="Login">Log in!</button></center>
+	    <br><br>
+      <name="input" action="html_form_action.asp" method="GET">
+      <!--Create a username:
+      <br><br>
+      <input type="text" placeholder="Username" name="username">
+      <br>
+       <button class="btn btn-small btn-primary" type="submit"
+      name="button" value="Submit">Sign up!</button> -->
+	  </center></form>
+      <br>
+      <br>
+<center>Developed by Eli Nass, Leopold Spohngellert,<br>Hayden Karp-Hecker,
+      and Ellie Abrams</center>
     </div> <!-- /container -->
 
-    <!-- Le javascript
+     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="../static/js/jquery.js"></script>

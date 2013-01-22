@@ -59,45 +59,57 @@
     </div>
 
     <div class="container">
-      
+    
 <form action "" method="post">
-  
-  <center> <p> <b>What is your question?</b> </p>
+  <br>
+      <center><h1>Create your survey:</h1>
+      <b>Follow these simple steps to
+  assess your students right in the middle of your lesson!</b>
+      <br>
+  <div id="myCollapsibleExample"><a href="#demo" data-toggle="collapse"><center><br><p> <h3><b>Response Type:</b> </p> </h3></a></div>
+       <div id="demo" class="collapse">
+    <p> <input type=radio name="qtype" id = "text" name = "quesiton" onclick = "hello()" value= "text"   </> Text Answer </p> 
+	       <p> <input type= radio name="qtype" id = "mult"  name = "question" onclick = "hello()" value= "mc" </>  Multiple
+  Choice </p></div>
 
-  <p> <input type=text name=question > <p>
- 
-  <p> <b>Reponse Type?</b> </p> 
-     
-  <p> <input type=radio name="qtype" value=text </input> Text Answer </p> 
-  <p> <input type=radio name="qtype" value=mc </input>  Multiple
-  Choice </p>
+
+  <div id="myCollapsibleExample"><a href="#demo1" data-toggle="collapse"><p> <h3><b>What is your question?</b></h3> </p>
+<div id = "demo1" class = "collapse" 
+  <p> <input type=text name=question > <p></div>
+<div class="row">
+  <div class="span6">
+
 
       <br>
-  <p> <b> How many answer choices? </b> <p>
- 
+
+  <div id="test">  <a href="#demo2" data-toggle="collapse"><p><b> How many answer choices? </b>  <p></div>
+  <div id="demo2" class="collapse"
  <p> <input type=radio name=length value=2 </input> 2 Choices </p>
  <p> <input type=radio name=length value=3 </input> 3 Choices </p>
- <p> <input type=radio name=length value=4 </input> 4 Choices </p>
+ <p> <input type=radio name=length value=4 </input> 4 Choices </p></div></div>
 
-      <br>
-      
- <p> <b> Answer Choices </b> <p>
- 
+ <div class="span6">     
+ <div id="test2"><a href="#demo3" data-toggle="collapse"><p> <b>Answer Choices:</b> <p></div>
+ <div id  = "demo3" class = "collapse"
  <p> <b> Correct Choice 1 </b> <input type=text name=Answer1 </input> </p>
- <p> Answer Choice 2<input type=text name=Answer2 </input> </p>
- <p> Answer Choice 3<input type=text name=Answer3 </input> </p>
- <p> Answer Choice 4<input type=text name=Answer4 </input> </p> 
+ <p> Answer Choice 2 <input type=text name=Answer2 </input> </p>
+ <p> Answer Choice 3 <input type=text name=Answer3 </input> </p>
+ <p> Answer Choice 4 <input type=text name=Answer4 </input> </p> </div>
+</div></div>
 
-<p> <b> Anonymous </b> <input type=checkbox name=anon value=anon </input> </p>
-<br>
- <p> <input type=submit name=button value=Submit </input> </p> </center>
 
+<div id="myCollapsibleExample"><a href="#demo4" data-toggle="collapse"><p> <b>Anonymous?</b></div>
+<div id = "demo4" class = "collapse" <p>Yes <input type=radio name=yesanon </input> </p>
+ <p>No <input type=radio name=noanon </input> </p></div>
+<br> </br>
+ <p> <input type=submit name=button value= "Submit Preferences" </input> </p> </center>
       <br><br><br><br>
-    </div> <!-- /container -->
+  <!-- /container -->
 
     <!-- Le javascript
-    ================================================== -->
+	 ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+  
     <script src="../static/js/jquery.js"></script>
     <script src="../static/js/bootstrap-transition.js"></script>
     <script src="../static/js/bootstrap-alert.js"></script>
@@ -111,6 +123,27 @@
     <script src="../static/js/bootstrap-collapse.js"></script>
     <script src="../static/js/bootstrap-carousel.js"></script>
     <script src="../static/js/bootstrap-typeahead.js"></script>
+      <script> 
+      $(document).ready(function(){
+      $("#test").hide(); 
+      $("#test2").hide();
+      });
+      function hello(){
+      if ( $('#mult').is(':checked') == true) {
+      $("#test").show(1000); 
+      $("#test2").show(1000);
+      }
+      if ( $('#text').is(':checked') == true) {
+      $("#test").hide(1000); 
+      $("#test2").hide(1000);
+      $("#demo3").hide(1000);
+      $("#demo2").hide(1000);
+      }
+      }
+      
+   
+      </script>
 
-  </body>
+    
+</body>
 </html>

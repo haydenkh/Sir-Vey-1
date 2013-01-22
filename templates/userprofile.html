@@ -1,3 +1,8 @@
+<!--
+Parameters:
+list of form_ids called form_ids
+-->
+
 <!doctype HTML>
 <html lang="en">
   <head>
@@ -43,15 +48,15 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#survey"><i class="icon-pencil"></i>
-		        Survey</a></li>
-	            <li><a href="#profile"><i class="icon-user icon-white"></i>
-			      Profile</a></li>
-		          <li><a href="#about"><i class="icon-globe
+		          Survey</a></li>
+	                  <li><a href="#profile"><i class="icon-user icon-white"></i>
+			            Profile</a></li>
+			            <li><a href="#about"><i class="icon-globe
       icon-white"></i>
-			            About</a></li>
+					            About</a></li>
               <li><a href="#contact"><i class="icon-search
       icon-white"></i>
-		        Help</a></li>
+		          Help</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -59,23 +64,28 @@
     </div>
 
     <div class="container">
-
 <form action = "" method="post">
-<br><br>
-<h1> {{question}} </h1>
-Type or select your answer below, then press 'Submit Answer'.
+ 
+      <br>
+      <center><h2>User Profile</h2>
+      <b>Here is your home base, where you can find your <br>inbox of
+      unanswered and saved questions.</b></center><br>
+<center><h3>Inbox:</h3>
+      <br>
+      {% for form in form_ids %}
+<input type="checkbox" name={{form}} href="127.0.0.1/form/{{form}}" />
+      {{form}}
       <br><br>
- {% if qtype =="text"%}
-  <p> <input type=text name=response> </p>
- {% else %}
-   {% set counter = 0%}
-   {% for answer in answers%}
-     {{answer}} <input type=radio name=answer{counter}>
-  {% set counter = counter+1%}
-  {% endfor%}
- {% endif%}
-<br><br>
-<input type=submit name=button value="Submit Answer">
+{% for form in form_ids %}
+<input type="checkbox" name={{form}} href="127.0.0.1/form/{{form}}" />
+{% endfor %}
+      <br><br>
+  <button class="btn btn-primary" type="button"
+      name=submit>Submit</button>
+      <br><br><br>
+      Ready to leave?
+      <br><br><button class="btn btn-primary" type="button" name=logout>Logout</button>
+</center>
 </form>
 
 <br><br><br><br>
@@ -97,6 +107,21 @@ Type or select your answer below, then press 'Submit Answer'.
     <script src="../static/js/bootstrap-collapse.js"></script>
     <script src="../static/js/bootstrap-carousel.js"></script>
     <script src="../static/js/bootstrap-typeahead.js"></script>
-
+    
+    <svg>
+      <circle
+	 cx="50" cy="100" r="20" stroke="black"
+	 stroke-width="2" fill="#C35617"/>
+      
+      <text x = "27" y = "70" 
+	    font-family = "Verdana" font-size = "20" fill = "#C35617"> 
+	Questions to answer
+	
+      </text> 
+      <text x="47" y="105" 
+	    font-family="Verdana" font-size="12" fill="black" >
+	{%numquestions%}
+      </text>
+    </svg>
   </body>
 </html>
