@@ -65,6 +65,7 @@ list of form_ids called form_ids
 
     <div class="container">
 <form action = "" method="post">
+ 
       <br>
       <center><h2>User Profile</h2>
       <b>Here is your home base, where you can find your <br>inbox of
@@ -106,6 +107,21 @@ list of form_ids called form_ids
     <script src="../static/js/bootstrap-collapse.js"></script>
     <script src="../static/js/bootstrap-carousel.js"></script>
     <script src="../static/js/bootstrap-typeahead.js"></script>
-
+    
+    <svg>
+      <circle
+	 cx="50" cy="100" r="20" stroke="black"
+	 stroke-width="2" fill="#C35617"/>
+      
+      <text x = "27" y = "70" 
+	    font-family = "Verdana" font-size = "20" fill = "#C35617"> 
+	Questions to answer
+	
+      </text> 
+      <text x="47" y="105" 
+	    font-family="Verdana" font-size="12" fill="black" >
+	{%numquestions%}
+      </text>
+    </svg>
   </body>
 </html>
