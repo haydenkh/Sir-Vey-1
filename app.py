@@ -7,9 +7,10 @@ import db
 app = Flask(__name__)
 app.secret_key = 'oyeah'
 
-user ="Eliftw@gmail.com"
+@app.route("/login",methods = ['GET','POST']
 
-@app.route("/", methods = ['GET', 'POST'])
+
+@app.route("/create", methods = ['GET', 'POST'])
 def create_form():
     
     if request.method == 'GET':
