@@ -70,10 +70,11 @@ list of students called students
       <br><br><br>
       
       {% for student in students %}
-      <input type="checkbox" value={{student}} name={{student}}>
+      <input type="checkbox" id = "check" value={{student}} name={{student}}>
       {% endfor% }
       <br><br>
   <button class="btn btn-primary" type="button" name=button>Send Question</button>
+<button class = "btn btn-primary" id = selectAll type = "button" name = button>Select All</button>
       </form>
       
 <br><br><br><br>
@@ -95,6 +96,15 @@ list of students called students
     <script src="../static/js/bootstrap-collapse.js"></script>
     <script src="../static/js/bootstrap-carousel.js"></script>
     <script src="../static/js/bootstrap-typeahead.js"></script>
+    <script>
+      $("#selectAll").click(function(){
+      selectAll();
+      });
 
+
+      function selectAll(){
+      $('#check').prop('checked', true);
+      }
+    </script>
   </body>
 </html>
