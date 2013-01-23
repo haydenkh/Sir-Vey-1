@@ -1,14 +1,28 @@
 from flask import Flask
-from flask import request, render_template, url_for, redirect, flash
+from flask import request, render_template, url_for, redirect, flash,session 
 
 import db
+#import util
 
 
 app = Flask(__name__)
 app.secret_key = 'oyeah'
 
-@app.route("/login",methods = ['GET','POST']
 
+
+@app.route("/",methods = ['GET','POST'])
+def login():
+    if request.method == 'GET':
+        try:
+            print request.form['login']
+        except:
+            print "null"
+        return render_template("user.html")
+    else:
+        if request.form['button'] == 'Login':
+            session['username'] =  request.form['login']
+            print session['username']
+            return redirect(url_for('profile_page'))
 
 @app.route("/create", methods = ['GET', 'POST'])
 def create_form():
@@ -59,19 +73,23 @@ def take_survey(question=None):
         return redirect(url_for("profile_page"))
 
 
-#@app.route("/user")
+
 @app.route("/user",methods = ['POST','GET'])
 def profile_page():
     if request.method == "GET":
         #this checks the database 
-        tmp = db.get_recipient_answerids(user)
+        tmp = db.get_recipient_answerids(session['username'])
         forms = []
-        for i in tmp:
-            if db.get_answer(i) == []:
-               forms.append(db.get_question_r(i))
-        return render_template("profile.html",
-                               user = user,
-                               form_ids = forms)
+        try:
+            for i in tmp:
+                if db.get_answer(i) == []:
+                    forms.append(db.get_question_r(i))
+        except:
+            print "exception"
+        return render_template("userprofile.html",
+                                user = session['username'],
+                                form_ids = forms,
+                                numquestions = 5)
 
     else:
         if request.form['button'] == 'Take Survey':
