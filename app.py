@@ -59,6 +59,7 @@ def create_form():
 @app.route("/form")
 @app.route("/form/<question>", methods = ['POST','GET'])
 def take_survey(question=None):
+    print "take_survey"
     #get questions variables here and use them
     if request.method == "GET":
         return render_template("created-form2.html",
@@ -67,7 +68,7 @@ def take_survey(question=None):
                                answers=db.get_answers(question))
     else:
         answer = request.form['response']
-        answerid = db.get_answer_id(question,user)
+        answerid = db.get_answer_id(question,session['username'])
         db.set_answer(answerid,answer)
         flash("Thank You!")
         return redirect(url_for("profile_page"))
@@ -92,8 +93,9 @@ def profile_page():
                                 numquestions = 5)
 
     else:
-        if request.form['button'] == 'Take Survey':
+        if request.form['button'] == 'take survey':
             question = request.form['question']
+            print question
             return redirect(url_for('take_survey',question=question))
             
 
