@@ -65,6 +65,10 @@ list of form_ids called form_ids
 
     <div class="container">
 <form action = "" method="post">
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 
 <b> Hello {{user}} </b>
       
@@ -86,6 +90,21 @@ list of form_ids called form_ids
 {% endfor %}
 </select>
 {%endif%}
+<<<<<<< HEAD
+=======
+
+ 
+      <br>
+      <center><h2>User Profile</h2>
+      <b>Here is your home base, where you can find your <br>inbox of
+      unanswered and saved questions.</b></center><br>
+<center><h3>Inbox:</h3>
+      <br>
+
+{% for form in form_ids %}
+<input type="checkbox" name={{form}} href="127.0.0.1/form/{{form}}" />
+{% endfor %}
+>>>>>>> master
       <br><br>
   <button class="btn btn-primary" type="button"
       name=submit>Take Selected Survey</button>
@@ -128,7 +147,7 @@ list of form_ids called form_ids
       </text> 
       <text x="47" y="105" 
 	    font-family="Verdana" font-size="12" fill="black" >
-	{%numquestions%}
+	{{numquestions}}
       </text>
     </svg>
   </body>
