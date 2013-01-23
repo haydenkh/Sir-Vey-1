@@ -24,6 +24,18 @@ def login():
             print session['username']
             return redirect(url_for('profile_page'))
 
+@app.route("/director", methods = ['GET','POST'])
+def director():
+    if request.method == "GET":
+        return render_template("director.html",
+                               students = ["Eliftw@gmail.com","Alex"],
+                               forms = db.get_forms())
+
+    else:
+        print request.form['question']
+        db.send_question(str(request.form['question']),["Eliftw@gmail.com"])
+        return redirect(url_for('profile_page'))
+
 @app.route("/create", methods = ['GET', 'POST'])
 def create_form():
     

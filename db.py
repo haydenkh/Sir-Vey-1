@@ -117,7 +117,7 @@ def send_question(question,recipient):
 
             d = {'question':question,'recipient':i,'answer':[]}
             collection.insert(d)
-    
+            print "Inserted"
 
 def get_answer_id(question,recipient):
     collection = connect2()
