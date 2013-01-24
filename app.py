@@ -18,14 +18,17 @@ def login():
         except:
             print "null"
         return render_template("user.html")
+
     else:
         if request.form['button'] == 'Login':
             session['username'] =  request.form['login']
             print session['username']
             return redirect(url_for('profile_page'))
 
-@app.route("/director", methods = ['GET','POST'])
-def director():
+
+
+@app.route("/send", methods = ['GET','POST'])
+def send_forms():
     if request.method == "GET":
         return render_template("director.html",
                                students = ["Eliftw@gmail.com","Alex"],
@@ -33,21 +36,42 @@ def director():
 
     else:
         print request.form['question']
-        db.send_question(str(request.form['question']),["Eliftw@gmail.com"])
-        return redirect(url_for('profile_page'))
+        db.send_question(str(request.form['question']),[request.form[student]])
+        return redirect(url_for('director'))
+
+
+
+@app.route("/director",methods = ['GET','POST'])
+def director():
+    if request.method == "GET":
+        return render_template("directorprofile.html")
+
+    else:
+        print request.form['button']
+        if request.form['button'] == 'create':
+            return redirect(url_for('create_form'))
+        if request.form['button'] == 'send':
+            return redirect(url_for('send_forms'))
+
+    
 
 @app.route("/create", methods = ['GET', 'POST'])
 def create_form():
     
     if request.method == 'GET':
-        if user == "Eliftw@gmail.com":
             return render_template("test-create2.html")
-        else:
-            return render_template("profile.html")
+
     else:
+       print request.form['qtype']
        question = request.form['question']
        qtype = request.form['qtype']
-       length = request.form['length']
+
+       try:
+           length = request.form['length']
+
+       except:
+           print "null"
+           
        #if anon isn't checked set to null
        try:
            anon = request.form['anon']
@@ -63,9 +87,9 @@ def create_form():
                answers.append(str(answer))
                i = i+1
        #save form        
-       db.add_form(question,qtype,answers,anon)
+       db.add_form(question,qtype,answers,anon,'0')
        
-       return redirect(url_for('take_survey',question=question))
+       return redirect(url_for('director'))
         
         
 @app.route("/form")
@@ -109,8 +133,25 @@ def profile_page():
             question = request.form['question']
             print question
             return redirect(url_for('take_survey',question=question))
-            
 
+        if request.form['button'] == 'logout':
+            return redirect(url_for('login'))
+
+        if request.form['button'] == 'results':
+            return redirect(url_for('results'))
+
+@app.route("/results",methods = ['POST','GET'])
+def results():
+    if request.method == "GET":
+        answers = db.get_recipient_answers(session['username'])
+        questions = db.get_recipient_questions(session['username'])
+        
+        return render_template("results.html",
+                               questions = questions,
+                               answers = answers)
+
+    else:
+        return redirect(url_for('profile_page'))
 
 if __name__ == "__main__":
     app.debug = True
