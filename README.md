@@ -1,9 +1,9 @@
 Sir-Vey
 =======
 
-so far this works in beta version, to acsess the director, go to 127.0.0.1:5000/director
+so far this works in beta version, to acsess the director, go to http://ml7.stuycs.org:8612/director
 
-everything else works for a potential user by logging to 127.0.0.1:5000/
+everything else works for a potential user by logging to http://ml7.stuycs.org:8612/
 
 fixes incoming
 
