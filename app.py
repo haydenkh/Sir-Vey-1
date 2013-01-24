@@ -31,12 +31,13 @@ def login():
 def send_forms():
     if request.method == "GET":
         return render_template("director.html",
+                               #Place holder for Emails.txt
                                students = ["Eliftw@gmail.com","Alex"],
                                forms = db.get_forms())
 
     else:
         print request.form['question']
-        db.send_question(str(request.form['question']),[request.form[student]])
+        db.send_question(str(request.form['question']),[request.form['student']])
         return redirect(url_for('director'))
 
 
