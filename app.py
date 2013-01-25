@@ -2,7 +2,7 @@ from flask import Flask
 from flask import request, render_template, url_for, redirect, flash,session 
 
 import db
-#import util
+import util
 
 
 app = Flask(__name__)
@@ -31,13 +31,18 @@ def login():
 def send_forms():
     if request.method == "GET":
         return render_template("director.html",
-                               #Place holder for Emails.txt
-                               students = ["Eliftw@gmail.com","Alex"],
+                               students = util.get_emails(),
                                forms = db.get_forms())
 
     else:
-        print request.form['question']
-        db.send_question(str(request.form['question']),[request.form['student']])
+        tmp = request.form.getlist('student')
+        students = []
+        for i in tmp:
+            students.append(str(i))
+        print students
+        db.send_question(str(request.form['question']),
+                         students)
+
         return redirect(url_for('director'))
 
 
@@ -48,9 +53,10 @@ def director():
         return render_template("directorprofile.html")
 
     else:
-        print request.form['button']
+
         if request.form['button'] == 'create':
             return redirect(url_for('create_form'))
+
         if request.form['button'] == 'send':
             return redirect(url_for('send_forms'))
 
@@ -63,7 +69,6 @@ def create_form():
             return render_template("test-create2.html")
 
     else:
-       print request.form['qtype']
        question = request.form['question']
        qtype = request.form['qtype']
 
@@ -88,7 +93,7 @@ def create_form():
                answers.append(str(answer))
                i = i+1
        #save form        
-       db.add_form(question,qtype,answers,anon,'0')
+       db.add_form(question,qtype,answers,anon)
        
        return redirect(url_for('director'))
         
@@ -156,4 +161,4 @@ def results():
 
 if __name__ == "__main__":
     app.debug = True
-    app.run(port=5000)
+    app.run(port=8612)
