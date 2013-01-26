@@ -1,0 +1,48 @@
+<!doctype HTML>
+
+<style>
+body{background-color:#000061;} 
+h1{text-align:center;} 
+h1,a, b, div {color:#C35617;}
+a:hover{background-color:#0000ff;}
+</style>
+
+<form action="" method="post">
+  
+<h1>Choose A Question To View Results</h1>
+
+<b>Questions</b><br></br>
+<select name = "select">
+{% for question in questions%}
+<a> onclick = "results"  <option valuex="{{question}}">{{question}} </option> </a>
+{% endfor %}
+</select>
+
+
+<br></br>
+ <input type="submit" name="button" onclick = "result();" value="View Results">
+<br></br>
+
+
+
+</form>
+
+
+
+<div id = "results">
+
+{% for result in results &}
+{{result}}
+{% endfor %}
+</div>
+
+<script src="../static/js/jquery.js"></script>
+<script>
+  $(document).ready(function(){
+  $("#results").hide(); 
+  });
+  function result(){
+  $("#results").show(); 
+  }
+</script>
+</html>
