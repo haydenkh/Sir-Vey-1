@@ -44,7 +44,8 @@ list of form_ids called form_ids
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Constant Contact with Students!</font></a>
+	   <a class="brand"> <img src="sirveylogo2.jpg" width="90" height="60"></a>
+          <br><a class="brand" href="#">Constant Contact with Students!</font></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#survey"><i class="icon-pencil"></i>
@@ -66,10 +67,14 @@ list of form_ids called form_ids
     <div class="container">
 <form action = "" method="post">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> master
 
+=======
+<br><br><br>
+>>>>>>> 1c9dc96110788dc618d602a0557584a85d0d89e5
 <b> Hello {{user}} </b>
       
       <br>
@@ -90,21 +95,8 @@ list of form_ids called form_ids
 {% endfor %}
 </select>
 {%endif%}
-<<<<<<< HEAD
-=======
 
- 
-      <br>
-      <center><h2>User Profile</h2>
-      <b>Here is your home base, where you can find your <br>inbox of
-      unanswered and saved questions.</b></center><br>
-<center><h3>Inbox:</h3>
-      <br>
 
-{% for form in form_ids %}
-<input type="checkbox" name={{form}} href="127.0.0.1/form/{{form}}" />
-{% endfor %}
->>>>>>> master
       <br><br>
   <button class="btn btn-primary" type="button"
       name=submit>Take Selected Survey</button>
