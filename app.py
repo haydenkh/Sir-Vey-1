@@ -12,17 +12,12 @@ app.secret_key = 'oyeah'
 
 @app.route("/",methods = ['GET','POST'])
 def login():
-    if request.method == 'GET':
-        try:
-            print request.form['login']
-        except:
-            print "null"
+    if request.method == 'GET'
         return render_template("user.html")
 
     else:
         if request.form['button'] == 'Login':
             session['username'] =  request.form['login']
-            print session['username']
             return redirect(url_for('profile_page'))
 
 
@@ -35,13 +30,20 @@ def send_forms():
                                forms = db.get_forms())
 
     else:
+        #get all the checked names from send page
         tmp = request.form.getlist('student')
+
         students = []
         for i in tmp:
             students.append(str(i))
         print students
-        db.send_question(str(request.form['question']),
-                         students)
+        
+        try:
+            db.send_question(str(request.form['question']),
+                             students)
+        except:
+            print "errrrror"
+
 
         return redirect(url_for('director'))
 
@@ -145,6 +147,7 @@ def profile_page():
 
         if request.form['button'] == 'results':
             return redirect(url_for('results'))
+
 
 @app.route("/results",methods = ['POST','GET'])
 def results():
