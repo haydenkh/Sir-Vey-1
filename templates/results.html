@@ -1,6 +1,6 @@
 <!--                                                                          
 Parameters:                                                                   
-list of survey responses called responses
+array of questions
 -->
 
 <!doctype HTML>
@@ -77,11 +77,13 @@ llapse">
       <b>Here are the results of your survey. After viewing, you can go
       back to your profile by pressing 'Go Back'.</b>
       <br><br><br>
-      {% for response in responses %}
-      {{response}}
-      {% endfor% }
+      <select name="select1">
+      {% for question in questions %}
+      <option value="{{question}}">{{question}} </option>
+      {% endfor %}
+      </select>
       <br><br>
-  <button class="btn btn-primary" type="button" name=button>Go Back</button>
+  <button class="btn btn-primary" type="button" name=button>Receive Responses</button>
 
       </form>
 
