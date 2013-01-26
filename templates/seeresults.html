@@ -1,0 +1,19 @@
+<!doctype HTML>
+
+<style>
+body{background-color:#000061;} 
+h1{text-align:center;} 
+h1,a,p,  div {color:#C35617;}
+a:hover{background-color:#0000ff;}
+</style>
+
+
+<h1> Below are your students' results </h1>
+
+<h1> {{Question}} </h1>
+{% set count = 0 %}
+{for student in students}
+<p> {{student}} 
+{{answers[count]}}
+</p>
+</div>
