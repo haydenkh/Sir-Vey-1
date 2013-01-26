@@ -1,6 +1,8 @@
 <!--                                                                          
-Parameters:                                                                   
-list of responses to question selected
+Parameters:     
+question                                                              
+list of students
+list of answers
 -->
 
 <!doctype HTML>
@@ -77,9 +79,18 @@ llapse">
       <b>Here are the results of your survey. After viewing, you can go
       back to your profile by pressing 'Go Back'.</b>
       <br><br><br>
+<h3>{{question}}</h3>
       
-      {% for response in responses %}
-      {{response}}
+      {% for student in students %}
+      {{students}}:
+      {% endfor %}
+<!--
+ELLIE: THE GOAL IS TO MAKE THE TWO FOR LOOPS ABOVE AND BELOW THIS COMMENT
+SHOW UP NEXT TO EACH OTHER SO THAT A STUDENT'S NAME WILL BE TO THE LEFT OF
+HIS/HER RESPONSE
+-->
+      {% for answer in answers %}
+      {{answer}}
       {% endfor %}
       
       <br><br>
