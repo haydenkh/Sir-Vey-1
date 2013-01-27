@@ -80,17 +80,10 @@ llapse">
       back to your profile by pressing 'Go Back'.</b>
       <br><br><br>
 <h3>{{question}}</h3>
-      
+      {% set x = 0 %}      
       {% for student in students %}
-      {{students}}:
-      {% endfor %}
-<!--
-ELLIE: THE GOAL IS TO MAKE THE TWO FOR LOOPS ABOVE AND BELOW THIS COMMENT
-SHOW UP NEXT TO EACH OTHER SO THAT A STUDENT'S NAME WILL BE TO THE LEFT OF
-HIS/HER RESPONSE
--->
-      {% for answer in answers %}
-      {{answer}}
+      <p> {{student}}: {{answer[x]}} </p>
+      {% x = x + 1 %}
       {% endfor %}
       
       <br><br>
