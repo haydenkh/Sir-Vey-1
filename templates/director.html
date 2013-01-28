@@ -66,16 +66,41 @@ list of students called students
 
     <div class="container">
       <form action = "" method="post"><br><br>
+
+
+       
+           {%if forms == []%}
+<b>                                                                                                  
+  You have not created any forms                                                     
+</b>
+{%else%}
+<b> Choose the form to send </b>
+
+<select name="question">
+{% for form in forms %}
+<p> <option value="{{form}}"> {{form}} </option> <p>
+{% endfor %}
+</select>
+{%endif%}
+
+<br>
+<br>
+
 <h2> Who would you like to answer your question?</h2>
+
+
       <b>Select which of your students you'd like to answer your question.</b>
       <br><br><br>
-      
+
+
       {% for student in students %}
-      <input type="checkbox" id = "check" value={{student}} name={{student}}>
-      {% endfor% }
+      <input type="checkbox" id = "check" value={{student}} name=student>{{student}}
+      <br>
+
+      {% endfor %}
       <br><br>
-  <button class="btn btn-primary" type="button" name=button>Send Question</button>
-<button class = "btn btn-primary" id = selectAll type = "button" name = button>Select All</button>
+  <button class="btn btn-primary" type="submit" name=button>Send Question</button>
+<button class = "btn btn-primary" id = selectAll type=submit name = button>Select All</button>
       </form>
       
 <br><br><br><br>

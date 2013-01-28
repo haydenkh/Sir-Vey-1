@@ -14,18 +14,21 @@ q = db.get_question(id)
 
 
 #db.send_question("This should not exsist",["allo","Eliftw@gmail.com"])
-db.send_question("How is the weather?",["Eliftw@gmail.com"])
-db.send_question("What?",['Eliftw@gmail.com'])
+db.send_question("How is the weather?",["Eliftw@gmail.com","Patrick"])
+#db.send_question("What?",['Eliftw@gmail.com'])
 #x = db.get_results()
 #print db.get_recipient(x[0])
-x = db.get_recipient_answerids("Eliftw@gmail.com")
+print db.get_recipient_questions("Eliftw@gmail.com")
+print db.get_recipient_questions("Patrick")
 #print "answer id"
 #print x
 #print x[0]
 #print "ready"
-db.set_answer(x[0],'3')
+#db.set_answer(x[0],'3')
 #print db.get_answer(x[0])
-print db.get_recipient_questions("Eliftw@gmail.com")
+#print db.get_recipient_questions("Eliftw@gmail.com")
+
+
 
 forms=db.get_forms()
 qtype=db.get_qtype("How do you do?")

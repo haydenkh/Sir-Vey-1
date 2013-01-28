@@ -1,6 +1,13 @@
 Sir-Vey
 =======
 
+so far this works in beta version, to acsess the director, go to http://ml7.stuycs.org:8612/director
+
+everything else works for a potential user by logging to http://ml7.stuycs.org:8612/
+
+fixes incoming
+
+
 Are you shy in class? Tired of knowing the answer but having your teacher call on someone else instead? We have.  
 Sir-Vey is a survey creator specifically designed for the classroom environment. Compatible on multiple mediums  
 (i.e. desktops, laptops, tablets, and smartphones), Sir-Vey allows a teacher to ask a question and receive answers  

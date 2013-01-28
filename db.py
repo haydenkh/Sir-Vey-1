@@ -31,7 +31,7 @@ def connect2():
 
 
 
-def add_form(question,qtype,answers,anon,correct):
+def add_form(question,qtype,answers,anon):
     #str question
     #str qtype
     #array answers
@@ -40,7 +40,7 @@ def add_form(question,qtype,answers,anon,correct):
     if(collection.find({'question':question}).count() > 0):
         return False
     else:
-        d = {'question':question,'qtype':qtype,'answers':answers,'anon':anon,'correct':correct}
+        d = {'question':question,'qtype':qtype,'answers':answers,'anon':anon}
         collection.insert(d)
         return True
 
@@ -117,7 +117,7 @@ def send_question(question,recipient):
 
             d = {'question':question,'recipient':i,'answer':[]}
             collection.insert(d)
-    
+            print "Inserted"
 
 def get_answer_id(question,recipient):
     collection = connect2()

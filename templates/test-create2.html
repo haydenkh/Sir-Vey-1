@@ -69,14 +69,13 @@
       <br>
   <div id="myCollapsibleExample"><a href="#demo" data-toggle="collapse"><center><br><p> <h3><b>Response Type:</b> </p> </h3></a></div>
        <div id="demo" class="collapse">
-    <p> <input type=radio name="qtype" id = "text" name = "quesiton" onclick = "hello()" value= "text"   </> Text Answer </p> 
-	       <p> <input type= radio name="qtype" id = "mult"  name = "question" onclick = "hello()" value= "mc" </>  Multiple
-  Choice </p></div>
+    <p> <input type=radio name=qtype id = "text"  onclick = "hello()" value= "text" </input> Text Answer </p> 
+    <p> <input type=radio name=qtype id = "mult" onclick = "hello()" value= "mc" </input>  Multiple Choice </p></div>
 
 
   <div id="myCollapsibleExample2"><a href="#demo1" data-toggle="collapse"><center><p> <h3><b>What is your question?</b></h3> </a></p>
       <div id = "demo1" class = "collapse">
-  <p> <input type=text name=question</> <p></div>
+  <p> <input type=text name=question </input> <p></div>
 <div class="row">
   <div class="span6">
 
@@ -100,10 +99,12 @@
 
 
 <div id="myCollapsibleExample3"><a href="#demo4" data-toggle="collapse"><p> <b>Anonymous?</b></a></div>
-<div id = "demo4" class = "collapse" <p>Yes <input type=radio name=yesanon </input> </p>
- <p>No <input type=radio name=noanon </input> </p></div>
+<div id = "demo4" class = "collapse" <p>Yes <input type=radio name=anon value=True </input> </p>
+ <p>No <input type=radio name=anon value=False </input> </p></div>
 <br> </br>
+
  <p> <input type=submit name=button value= "Submit Preferences" </input> </p> </center>
+
       <br><br><br><br>
   <!-- /container -->
 

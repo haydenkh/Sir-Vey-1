@@ -68,6 +68,7 @@ Type or select your answer below, then press 'Submit Answer'.
       <br><br>
  {% if qtype =="text"%}
   <p> <input type=text name=response> </p>
+
  {% else %}
    {% set counter = 0%}
    {% for answer in answers%}
@@ -77,7 +78,9 @@ Type or select your answer below, then press 'Submit Answer'.
  {% endif%}
 <br><br>
 <input type=submit name=button value="Submit Answer">
+<input type=submit name=button value="back">
 </form>
+
 
 <br><br><br><br>
     </div> <!-- /container -->
