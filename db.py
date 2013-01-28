@@ -128,6 +128,22 @@ def get_answer_id(question,recipient):
         answerid = answerid[0]
         return answerid['_id']
 
+def get_dresults2(question):
+    collection = connect2()
+    answerid = [i for i in collection.find({'question':question})]
+    if len(answerid) == 0:
+        return
+    else:
+        students = []
+        answers = []
+        for i in answerid:
+            students.append(str(i['recipient']))
+            answers.append(i['answer'])
+        
+        return students,answers
+
+print get_dresults2("How do you do?")
+
 def get_results():
     #return the _id of all results 
     collection = connect2()
@@ -135,6 +151,7 @@ def get_results():
     res = collection.find()
     results =[x['_id'] for x in res]
     return results
+
 
 
 def get_answer(answerid):
