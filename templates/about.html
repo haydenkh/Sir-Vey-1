@@ -1,11 +1,5 @@
-<!--
-Parameters:
-list of form_ids called form_ids
--->
-
+<!doctypeHTML>
 <!doctype HTML>
-<form action = "" method="post">
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -46,16 +40,15 @@ list of form_ids called form_ids
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-	   <a class="brand"> <img src="sirveylogo2.jpg" width="90" height="60"></a>
-          <br><a class="brand" href="#">Constant Contact with Students!</font></a>
+          <a class="brand" href="#">Constant Contact with Students!</font></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#survey"><i class="icon-pencil"></i>
 		          Survey</a></li>
 	                  <li><a href="#profile"><i class="icon-user icon-white"></i>
 			            Profile</a></li>
-			            <li><a href="127.0.0.1/about">
-<i class="icon-globe      icon-white"></i>
+			            <li><a href="#about"><i class="icon-globe
+      icon-white"></i>
 					            About</a></li>
               <li><a href="#contact"><i class="icon-search
       icon-white"></i>
@@ -67,41 +60,28 @@ list of form_ids called form_ids
     </div>
 
     <div class="container">
-
-
-
-<br><br><br>
-<b> Hello {{user}} </b>
-      
-      <br>
-      <center><h2>User Profile</h2>
-      <b>Here is your home base, where you can find your <br>inbox of
-      unanswered and saved questions.</b></center><br>
-<center><h3>Inbox:</h3>
-      <br>
-
-{%if form_ids == []%}
-<b>
-  There are no surveys for you to take right now
-</b>
-{%else%}
-<select name="question">
-{% for form in form_ids %}
- <option value="{{form}}"> {{form}} </option>
-{% endfor %}
-</select>
-{%endif%}
-
-      <br><br>
-  <button class="btn btn-primary" type="submit" name="button"  value="take survey">Take Selected Survey</button>
-      <br><br><br>
-      Ready to leave?
-      <br><br><button class="btn btn-primary" type="submit" name=button value=logout>Logout</button>
-      <br><br>
-      <button class="btn btn-primary" type="submit" name =button value=results> Results </button>
-
-</center>
-
+<br><br>
+<form action = "" method="post">
+<h1> ABOUT </h1>
+Are you shy in class? Tired of knowing the answer but having your teacher call on someone else instead? We have.<br>
+Sir-Vey is a survey creator specifically designed for the classroom environment. Compatible on multiple mediums<br>
+(i.e. desktops, laptops, tablets, and smartphones), Sir-Vey allows a teacher to ask a question and receive answers<br>
+from his or her students. This device allows a teacher to receive a response from everyone in the class!<br>
+<br>
+Resources:<br>
+MongoDB, custom-made survey generator, twillio (or some other text-sending device)<br>
+<br>
+Plan:<br>
+2 Databases (MongoDB)<br>
+1. Keep old forms<br>
+2. create forms<br>
+Use Twillio service to allow students to submit answers.<br>
+<br>
+Board of Directors:<br>
+Eli Nass (CEO)<br>
+Hayden Karp-Hecker (CFO) <br>
+Leopold Spohngellert (CIO) <br>
+Ellie Abrams (CTBO)<br>
 </form>
 
 <br><br><br><br>
@@ -123,21 +103,6 @@ list of form_ids called form_ids
     <script src="../static/js/bootstrap-collapse.js"></script>
     <script src="../static/js/bootstrap-carousel.js"></script>
     <script src="../static/js/bootstrap-typeahead.js"></script>
-    
-    <svg>
-      <circle
-	 cx="50" cy="100" r="20" stroke="black"
-	 stroke-width="2" fill="#C35617"/>
-      
-      <text x = "27" y = "70" 
-	    font-family = "Verdana" font-size = "20" fill = "#C35617"> 
-	Questions to answer
-	
-      </text> 
-      <text x="47" y="105" 
-	    font-family="Verdana" font-size="12" fill="black" >
-	{{numquestions}}
-      </text>
-    </svg>
+
   </body>
 </html>

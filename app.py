@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import request, render_template, url_for, redirect, flash,session 
+from flask import request, render_template, url_for, redirect, flash, session 
 
 import db
 import util
@@ -12,14 +12,17 @@ app.secret_key = 'oyeah'
 
 @app.route("/",methods = ['GET','POST'])
 def login():
-    if request.method == 'GET'
+    if request.method == 'GET':
         return render_template("user.html")
 
     else:
         if request.form['button'] == 'Login':
             session['username'] =  request.form['login']
-            return redirect(url_for('profile_page'))
-
+            if session['username'] == 'director':
+                return redirect(url_for('director'))
+            else:
+                
+                return redirect(url_for('profile_page'))
 
 
 @app.route("/send", methods = ['GET','POST'])
@@ -62,7 +65,30 @@ def director():
         if request.form['button'] == 'send':
             return redirect(url_for('send_forms'))
 
-    
+        if request.form['results'] == 'send':
+            return reidrect(url_for('director_results'))
+
+
+@app.route("/director_results", methods = ['GET','POST'])
+def director_results():
+
+    if request.method == 'GET':
+        return render_template("dresults.html")
+
+    else:
+        return render_template("dresults2.html")
+
+
+@app.route("/about", methods = ['GET', 'POST' ])
+def about():
+
+    if request.method == 'GET':
+        return render_template("about.html")
+
+
+
+
+
 
 @app.route("/create", methods = ['GET', 'POST'])
 def create_form():
@@ -106,11 +132,17 @@ def take_survey(question=None):
     print "take_survey"
     #get questions variables here and use them
     if request.method == "GET":
+        try:
+            answers = db.get_answers(question)
+        except:
+            answers = []
+
         return render_template("created-form2.html",
                                question=question,
                                qtype=db.get_qtype(question),
-                               answers=db.get_answers(question))
+                               answers=answers)
     else:
+
         answer = request.form['response']
         answerid = db.get_answer_id(question,session['username'])
         db.set_answer(answerid,answer)
@@ -139,7 +171,6 @@ def profile_page():
     else:
         if request.form['button'] == 'take survey':
             question = request.form['question']
-            print question
             return redirect(url_for('take_survey',question=question))
 
         if request.form['button'] == 'logout':
