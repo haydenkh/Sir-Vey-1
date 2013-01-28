@@ -1,6 +1,8 @@
 <!--                                                                          
-Parameters:                                                                   
-array of questions
+Parameters:     
+question                                                              
+list of students
+list of answers
 -->
 
 <!doctype HTML>
@@ -51,7 +53,7 @@ llapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-	   <a class="brand"> <img src="sirveylogo2.jpg" width="90" height="60"></a>
+	     <a class="brand"> <img src="sirveylogo2.jpg" width="90" height="60"></a>
           <br><a class="brand" href="#">Constant Contact with Students!</font></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
@@ -77,11 +79,13 @@ llapse">
       <b>Here are the results of your survey. After viewing, you can go
       back to your profile by pressing 'Go Back'.</b>
       <br><br><br>
-      <select name="select1">
-      {% for question in questions %}
-      <option value="{{question}}">{{question}} </option>
+<h3>{{question}}</h3>
+      {% set x = 0 %}      
+      {% for student in students %}
+      <p> {{student}}: {{answer[x]}} </p>
+      {% x = x + 1 %}
       {% endfor %}
-      </select>
+      
       <br><br>
   <button class="btn btn-primary" type="button" name=button>Receive Responses</button>
 
