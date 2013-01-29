@@ -65,18 +65,21 @@ def director():
         if request.form['button'] == 'send':
             return redirect(url_for('send_forms'))
 
-        if request.form['results'] == 'send':
-            return reidrect(url_for('director_results'))
+        if request.form['button'] == 'results':
+            return redirect(url_for('director_results'))
 
 
 @app.route("/director_results", methods = ['GET','POST'])
 def director_results():
 
     if request.method == 'GET':
-        return render_template("dresults.html")
+        return render_template("dresults.html",
+                               questions =db.get_forms())
 
     else:
-        return render_template("dresults2.html")
+        students = util.get_emails()
+        return render_template("dresults2.html",
+                               students = students)
 
 
 @app.route("/about", methods = ['GET', 'POST' ])
@@ -132,12 +135,14 @@ def take_survey(question=None):
     print "take_survey"
     #get questions variables here and use them
     if request.method == "GET":
-        try:
-            answers = db.get_answers(question)
-        except:
+        
             answers = []
-
-        return render_template("created-form2.html",
+            tmp = db.get_answers(question)
+            for i in tmp:
+                answers.append(str(i))
+            
+            print answers
+            return render_template("created-form2.html",
                                question=question,
                                qtype=db.get_qtype(question),
                                answers=answers)
