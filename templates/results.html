@@ -51,7 +51,8 @@ llapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Constant Contact with Students!</font></a>
+	     <a class="brand"> <img src="sirveylogo2.jpg" width="90" height="60"></a>
+          <br><a class="brand" href="#">Constant Contact with Students!</font></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#survey"><i class="icon-pencil"></i>
@@ -71,16 +72,18 @@ llapse">
     </div>
 
     <div class="container">
-      <form action = "" method="post"><br>
+      <form action = "" method="post"><br><br>
 <h2>Survey Results</h2>
       <b>Here are the results of your survey. After viewing, you can go
       back to your profile by pressing 'Go Back'.</b>
       <br><br><br>
-      {% for response in responses %}
-      {{response}}
-      {% endfor% }
+      {% set count = 0 %}
+      {% for question in questions %}
+      {{question}} :  {{answers[count]}}
+      {% set count = count+1 %}
+      {% endfor %}
       <br><br>
-  <button class="btn btn-primary" type="button" name=button>Go Back</button>
+  <button class="btn btn-primary" type="submit" name=button>Go Back</button>
 
       </form>
 
