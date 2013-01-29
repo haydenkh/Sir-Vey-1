@@ -141,7 +141,6 @@ def take_survey(question=None):
             for i in tmp:
                 answers.append(str(i))
             
-            print answers
             return render_template("created-form2.html",
                                question=question,
                                qtype=db.get_qtype(question),
@@ -188,9 +187,12 @@ def profile_page():
 @app.route("/results",methods = ['POST','GET'])
 def results():
     if request.method == "GET":
-        answers = db.get_recipient_answers(session['username'])
+        answers = []
+        tmp = db.get_recipient_answers(session['username'])
+        print tmp
+        for i in tmp:
+            answers.append(str(i[0]))
         questions = db.get_recipient_questions(session['username'])
-        
         return render_template("results.html",
                                questions = questions,
                                answers = answers)

@@ -122,6 +122,7 @@ def send_question(question,recipient):
 def get_answer_id(question,recipient):
     collection = connect2()
     answerid = [i for i in collection.find({'question':question,'recipient':recipient})]
+
     if len(answerid) == 0:
         return
     else:
@@ -142,7 +143,7 @@ def get_dresults2(question):
         
         return students,answers
 
-print get_dresults2("How do you do?")
+
 
 def get_results():
     #return the _id of all results 
@@ -216,6 +217,7 @@ def get_recipient_answers(recipient):
     answerids = get_recipient_answerids(recipient)
     for i in answerids:
         answers.append(get_answer(i))
+    
     return answers
 
 def get_recipient_questions(recipient):        
